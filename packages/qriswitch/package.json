@@ -1,7 +1,7 @@
 {
   "name": "@qri-io/qriswitch",
   "bin": "lib/qriswitch.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A CLI for quickly switching qri profiles",
   "author": "",
   "license": "GPLV3",
