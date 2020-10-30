@@ -1,6 +1,6 @@
 {
   "name": "@qri-io/qri-node",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A node wrapper for Qri CLI",
   "author": "",
   "homepage": "",
