@@ -1,6 +1,6 @@
 # qriswitch
 
-A node CLI for switching qri profile environment variables.  Tested on MacOS Catalina.
+A node CLI for switching qri profile environment variables.
 
 ## Background
 
@@ -71,4 +71,4 @@ When you choose a profile, qriswitch does two things:
 - exports both environment variables in `$HOME/.qriswitch/.env`, which makes them available in your shell (see above for how to 'source' this file)
 - uses `launchctl setenv` to make both environment variables available to Qri Desktop
 
-This has never been tested in Windows or Linux.  PRs welcome for expansion to other environments.
+This has never been tested in Windows or Linux.  Give it a try and please let us know if you have any trouble by opening a github issue.  PRs welcome for expansion to other environments.
