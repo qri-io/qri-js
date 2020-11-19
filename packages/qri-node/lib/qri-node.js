@@ -1,4 +1,4 @@
-const { spawnSync } = require('child_process')
+const { exec } = require('child_process')
 
 // helper function for appending qri command flags to the base command string
 const appendFlags = (args, flags) => {
@@ -11,12 +11,19 @@ const appendFlags = (args, flags) => {
 
     // special handling for --file
     if (key === 'file') {
-      flags[key].forEach((d) => {
+      flags[key].forEach((d, i) => {
         args = [
           ...args,
-          '--file'
+          '--file',
+          `${flags[key][i]}`
         ]
       })
+    } else if (key === 'body') {
+      args = [
+        ...args,
+        '--body',
+        flags[key]
+      ]
     } else {
       args = [
         ...args,
@@ -152,19 +159,14 @@ class Qri {
     // append flags
     args = appendFlags(args, flags)
     args = appendFlags(args, this.options)
-
     return new Promise((resolve, reject) => {
-      try {
-        const { status, stdout, stderr } = spawnSync('qri', args, { shell: true })
-
-        if (status === 0) {
+      exec(`qri ${args.join(' ')}`, (err, stdout, stderr) => {
+        if (!err) {
           resolve(stdout.toString().trim())
         } else {
           reject(new Error(stderr.toString().trim()))
         }
-      } catch (e) {
-        reject(e)
-      }
+      })
     })
   }
 }
